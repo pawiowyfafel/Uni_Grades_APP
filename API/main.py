@@ -99,6 +99,11 @@ def get_all():
     subjects = Subject.query.all()
     return jsonify([subject.to_dict() for subject in subjects])
 
+@app.route("/get_semester/<int:id_semester>", methods=["GET"])
+def get_by_semester(id_semester):
+    subjects = Subject.query.filter_by(semester=id_semester).all()
+    
+    return jsonify([subject.to_dict() for subject in subjects])
 
 
 if __name__ == "__main__":
